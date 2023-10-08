@@ -11,7 +11,7 @@ def download_reviews(base_url, num_pages):
     # Initialize Selenium WebDriver
 
 
-    for page in range(20, num_pages + 1):
+    for page in range(50, num_pages + 1):
         ua = UserAgent()
         user_agent = ua.random
         print("User-Agent: ", user_agent)
@@ -50,5 +50,5 @@ def download_reviews(base_url, num_pages):
 
 if __name__ == "__main__":
     base_url = "https://otzovik.com/reviews/sberbank_rossii/"
-    num_pages = 30
+    num_pages = 200
     download_reviews(base_url, num_pages)
