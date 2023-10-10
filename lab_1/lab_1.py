@@ -13,7 +13,7 @@ def download_reviews(base_url, num_pages):
         user_agent = ua.random
         print("User-Agent: ", user_agent)
         headers = {"User-Agent": user_agent}
-        page_url = f"{base_url}{page}/?ratio=4"
+        page_url = f"{base_url}{page}"
         time.sleep(40)
         response = requests.get(page_url, headers=headers)
         print(response.status_code)
