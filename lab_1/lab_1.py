@@ -8,22 +8,20 @@ def download_reviews(base_url, num_pages):
     if not os.path.exists("dataset"):
         os.makedirs("dataset")
 
-    for page in range(20, num_pages + 1):
+    for page in range(1, num_pages + 1):
         ua = UserAgent()
         user_agent = ua.random
         print("User-Agent: ", user_agent)
         headers = {"User-Agent": user_agent}
-        page_url = f"{base_url}{page}/?ratio=3"
-        time.sleep(20)
+        page_url = f"{base_url}{page}/?ratio=4"
+        time.sleep(40)
         response = requests.get(page_url, headers=headers)
         print(response.status_code)
 
         if response.status_code == 200:
             print("Success")
             soup = BeautifulSoup(response.content, 'html.parser')
-            time.sleep(10)
             titles = soup.find_all('a', class_='review-title')
-            time.sleep(10)
             ratings = soup.find_all('div', class_='product-rating tooltip-right')
 
             for title, rating in zip(titles, ratings):
@@ -47,5 +45,5 @@ def download_reviews(base_url, num_pages):
 
 if __name__ == "__main__":
     base_url = "https://otzovik.com/reviews/sberbank_rossii/"
-    num_pages = 32
+    num_pages = 250
     download_reviews(base_url, num_pages)
