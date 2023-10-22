@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="add .text">
-      <change afterPath="$PROJECT_DIR$/lab_2/lab_2.py" afterDir="false" />
+    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="fix page_url">
+      <change afterPath="$PROJECT_DIR$/lab_2/copy_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_1/lab_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_1/lab_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_2/lab_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_2/annotation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +146,23 @@
       <option name="project" value="LOCAL" />
       <updated>1696746507615</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix code and add file">
+      <option name="closed" value="true" />
+      <created>1696916577164</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696916577164</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix page_url">
+      <option name="closed" value="true" />
+      <created>1696916654432</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696916654432</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,6 +195,8 @@
     <MESSAGE value="add files" />
     <MESSAGE value="add folder" />
     <MESSAGE value="add .text" />
-    <option name="LAST_COMMIT_MESSAGE" value="add .text" />
+    <MESSAGE value="fix code and add file" />
+    <MESSAGE value="fix page_url" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix page_url" />
   </component>
 </project>
