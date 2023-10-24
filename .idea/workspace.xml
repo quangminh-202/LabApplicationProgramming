@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="file csv">
-      <change afterPath="$PROJECT_DIR$/lab_2/iterator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab_2/next.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab_2/random_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_2/create_annotation.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_2/create_annotation.py" afterDir="false" />
-    </list>
+    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="add file next.py iterator.py random_dataset.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -191,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697969589098</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add file next.py iterator.py random_dataset.py">
+      <option name="closed" value="true" />
+      <created>1698188772164</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698188772164</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +231,7 @@
     <MESSAGE value="add lab_2 and run file copy_dataset.py" />
     <MESSAGE value="file csv" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="add file next.py iterator.py random_dataset.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="add file next.py iterator.py random_dataset.py" />
   </component>
 </project>
