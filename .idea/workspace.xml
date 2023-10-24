@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="add file next.py iterator.py random_dataset.py" />
+    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="add file next.py iterator.py random_dataset.py">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_2/iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_2/iterator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -193,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698188772164</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add file next.py iterator.py random_dataset.py">
+      <option name="closed" value="true" />
+      <created>1698188952755</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698188952755</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
