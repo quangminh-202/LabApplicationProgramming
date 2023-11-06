@@ -16,6 +16,6 @@ class AnnIterator:
 if __name__ == "__main__":
     path = "C:/Users/DELL/PycharmProjects/LabApplicationProgramming/python/dataset_copy"
     it = AnnIterator(path)
-    print(it.__next__('1_0150.txt'))
-    print(it.__next__('1_0151.txt'))
-    print(it.__next__('1_0152.txt'))
+    print(it.__next__('1_0001.txt'))
+    print(it.__next__('1_0002.txt'))
+    print(it.__next__('1_0003.txt'))
