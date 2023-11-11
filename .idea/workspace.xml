@@ -7,7 +7,6 @@
     <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="the last">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab_2/iterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_2/iterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab_2/next.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_2/next.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +212,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698189506815</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="the last">
+      <option name="closed" value="true" />
+      <created>1699233603133</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1699233603133</updated>
+    </task>
+    <task id="LOCAL-00018" summary="the last">
+      <option name="closed" value="true" />
+      <created>1699233618597</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1699233618597</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
