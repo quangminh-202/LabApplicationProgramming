@@ -1,7 +1,5 @@
 import os
 
-
-
 class AnnIterator:
     def __init__(self, directory: str):
         self.directory = directory
