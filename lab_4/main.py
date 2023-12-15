@@ -9,7 +9,7 @@ import nltk
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger_ru')
 
-import lab_2
+import creat_csv
 
 from typing import List, Dict
 from collections import Counter
@@ -33,7 +33,7 @@ def make_df(path: str) -> pd.DataFrame:
         pd.DataFrame: ready-made dataset
     """
     if 'paths.csv' not in os.listdir():
-        lab_2.make_csv(path)
+        creat_csv.make_csv(path)
     num_list = []
     text_list = []
     r = open('paths.csv', 'r')
@@ -225,14 +225,14 @@ def graph_build(hist_list: Dict[str, int]) -> None:
 if __name__ == "__main__":
     df = make_df('dataset')
     add_word_count(df)
-    # print('----')
-    # print(df)
-    # print('----')
-    # print(stats_by_word_count(df))
-    # print(sort_by_word_count(df, 100))
-    # print(sort_by_num(df, '5'))
-    # print(preprocess_text(''))
-    # print(group_by_num(df))
+    print('----')
+    print(df)
+    print('----')
+    print(stats_by_word_count(df))
+    print(sort_by_word_count(df, 100))
+    print(sort_by_num(df, '5'))
+    print(preprocess_text(''))
+    print(group_by_num(df))
     hist = make_histogram(df, "2")
 
     graph_build(hist)
