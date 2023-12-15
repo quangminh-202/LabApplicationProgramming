@@ -5,11 +5,11 @@ from copy_dataset import copy_dataset
 from random_dataset import dataset_random
 from create_annotation import create_annotation as crt
 import sys
-from PyQt6.QtWidgets import (QPushButton, QInputDialog, QApplication,
+from PyQt5.QtWidgets import (QPushButton, QInputDialog, QApplication,
                              QMainWindow, QFileDialog, QLabel)
-from PyQt6.QtCore import QSize, Qt
-from PyQt6 import QtGui, QtWidgets
-from PyQt6.QtGui import QPixmap
+from PyQt5.QtCore import QSize, Qt
+from PyQt5 import QtGui, QtWidgets
+from PyQt5.QtGui import QPixmap
 
 
 class MainWindow(QMainWindow):

@@ -20,13 +20,17 @@ class Annotation:
             self.rows += 1
 
     def first_file_text(self, label: str):
-        res = [] #list result
+        res = []  # Danh sách kết quả
         try:
             with open(self.filename, 'r') as file:
                 rows = csv.DictReader(file)
                 for row in rows:
-                    if row[self.__header[2]] == label:
-                        return row[self.__header[0]]
+                    if row.get(self.__header[2]) == label:
+                        res.append(row.get(self.__header[0]))
+            if not res:
+                logging.warning(f"Không tìm thấy đường dẫn cho nhãn {label} trong {self.filename}.")
+        except FileNotFoundError:
+            logging.warning(f"Tệp tin {self.filename} không tồn tại.")
         except OSError as err:
-            logging.warning(f' При попытке открытия аннотации {self.filename} произошла ошибка:\n{err}.')
-        return res[0]
+            logging.warning(f'Khi mở tệp tin {self.filename} xảy ra lỗi:\n{err}.')
+        return res
