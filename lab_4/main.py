@@ -5,19 +5,17 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import nltk
+import nltk # xử lý văn bản thôi
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger_ru')
 
-import creat_csv
+from annotation import Annotation
+from create_annotation import create_annotation as crt
 
-from typing import List, Dict
-from collections import Counter
-
+from typing import List, Dict # khai báo và kiểm tra dữ liệu
+from collections import Counter # thư viên đếm số lần xuất hiện iterable
 from nltk.corpus import stopwords
-from pymystem3 import Mystem
-
-
+from pymystem3 import Mystem  # lemmatization được phát triển bởi yandex
 
 mystem = Mystem()
 russian_stopwords = stopwords.words("russian")
@@ -32,8 +30,9 @@ def make_df(path: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: ready-made dataset
     """
-    if 'paths.csv' not in os.listdir():
-        creat_csv.make_csv(path)
+    ann = Annotation("file_csv.csv")
+    if not os.path.exists("file_csv.csv"):
+        crt(self.dataset_path, ann)
     num_list = []
     text_list = []
     r = open('paths.csv', 'r')
@@ -234,8 +233,8 @@ if __name__ == "__main__":
     print(preprocess_text(''))
     print(group_by_num(df))
     hist = make_histogram(df, "2")
-
     graph_build(hist)
+
     # df = pd.read_csv('full_data.csv')
     # df = df.drop(df.columns[[0]], axis = 1)
     # df = df.dropna()
