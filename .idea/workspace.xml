@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="fix lab_4">
+    <list default="true" id="8c402332-28bf-453d-bb69-a877f8bb3f32" name="Changes" comment="add annotation.py and create_annotation.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab_4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab_4/paths.csv" beforeDir="false" afterPath="$PROJECT_DIR$/lab_4/file_csv.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -284,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702625048307</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="add annotation.py and create_annotation.py">
+      <option name="closed" value="true" />
+      <created>1702881814513</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1702881814513</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -328,6 +337,7 @@
     <MESSAGE value="done" />
     <MESSAGE value="add" />
     <MESSAGE value="fix lab_4" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix lab_4" />
+    <MESSAGE value="add annotation.py and create_annotation.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="add annotation.py and create_annotation.py" />
   </component>
 </project>

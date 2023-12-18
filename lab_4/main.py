@@ -6,13 +6,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import nltk # xử lý văn bản thôi
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger_ru')
-
 from annotation import Annotation
 from create_annotation import create_annotation as crt
-
-from typing import List, Dict # khai báo và kiểm tra dữ liệu
+from typing import List, Dict, Tuple
 from collections import Counter # thư viên đếm số lần xuất hiện iterable
 from nltk.corpus import stopwords
 from pymystem3 import Mystem  # lemmatization được phát triển bởi yandex
@@ -22,121 +18,45 @@ russian_stopwords = stopwords.words("russian")
 
 
 def make_df(path: str) -> pd.DataFrame:
-    """Function gets path to dataset and make DataFrame with num mark and text field
-
-    Args:
-        path (str): path to dataset
-
-    Returns:
-        pd.DataFrame: ready-made dataset
-    """
-    ann = Annotation("file_csv.csv")
+    path_dataset = os.path.join(path, "dataset")
+    ann = Annotation(os.path.join(path, "file_csv.csv"))
     if not os.path.exists("file_csv.csv"):
-        crt(self.dataset_path, ann)
-    num_list = []
-    text_list = []
-    r = open('paths.csv', 'r')
-    reader = list(csv.reader(r))
-    for item in reader:
-        f = open(item[0], 'r', encoding='utf-8')
-        text = f.read()
-        num_list.append(item[2])
-        text_list.append(text)
+        crt(path_dataset, ann)
+    num_list, text_list = [], []
+    items = list(csv.reader(open('file_csv.csv', 'r')))
+    for item in items:
+        with open(item[0], 'r', encoding='utf-8') as f:
+            text = f.read()
+            num_list.append(item[2])
+            text_list.append(text)
     d = {'num': num_list, 'text': text_list}
     df1 = pd.DataFrame(data=d)
     df1 = df1.dropna()
     return df1
 
-
 def text_update(text: str) -> List[str]:
-    """Function remove from text punctuation marks and split it
-
-    Args:
-        text (str): text for update
-
-    Returns:
-        List[str]: List with words from text
-    """
     text = re.sub(r"[^\w\s]", "", text)
-    text = text.split()
-    return text
-
+    return text.split()
 
 def add_word_count(df: pd.DataFrame) -> None:
-    """Function add to DataFrame column with word count information
+    df['word_count'] = df['text'].apply(lambda x: len(text_update(x)))
 
-    Args:
-        df (pd.DataFrame): DataFrame to edit
-    """
-    df['word_count'] = 0
-    for i in range(len(df)):
-        df.iloc[i, 2] = len(text_update(df.iloc[i, 1]))
-
-
-def stats_by_word_count(df: pd.DataFrame) -> pd.DataFrame:
-    """Function make DataFrame with information about average number of word to every mark
-
-    Args:
-        df (pd.DataFrame): DataFrame with text information
-
-    Returns:
-        pd.DataFrame: DataFrame num mark: word count
-    """
+def group_and_mean_word_count(df: pd.DataFrame) -> pd.DataFrame:
     return df[["num", "word_count"]].groupby("num").mean()
 
-
-def sort_by_word_count(df: pd.DataFrame, max_count: int) -> pd.DataFrame:
-    """The function creates a dataframe by removing lines with a word count exceeding max count
-
-    Args:
-        df (pd.DataFrame): DataFrame with text information
-        max_count (int): max count of words count
-
-    Returns:
-        pd.DataFrame: DataFrame with a word count exceeding max count
-    """
-    new_df = df.loc[df['word_count'] <= max_count]
-    return new_df
-
+def sort_by_max_word_count(df: pd.DataFrame, max_count: int) -> pd.DataFrame:
+    return df.loc[df['word_count'] <= max_count]
 
 def sort_by_num(df: pd.DataFrame, num: str) -> pd.DataFrame:
-    """Function sorts DataFrame by the num mark
-
-    Args:
-        df (pd.DataFrame): DataFrame to sort
-        num (str): num mark
-
-    Returns:
-        pd.DataFrame: sorted DataFrame
-    """
-    new_df = df.loc[df['num'] == num]
-    return new_df
-
+    return df.loc[df['num'] == num]
 
 def preprocess_text(text: str) -> List[str]:
-    """Function gets text, lemmatize them and removes stopwords
-
-    Args:
-        text (str): text for preprocess
-
-    Returns:
-        List[str]: preprocessed text
-    """
     tokens = mystem.lemmatize(text.lower())
     tokens = [token for token in tokens if token not in russian_stopwords]
     text = " ".join(tokens)
     return tokens
 
-
 def preprocess_text_only_A(text: str) -> List[str]:
-    """Function gets text, lemmatize them and removes all word without adjective and adverb
-
-    Args:
-        text (str): text for preprocess
-
-    Returns:
-        List[str]: preprocessed text
-    """
     tokens = mystem.lemmatize(text.lower())
     tokens = [token for token in tokens if token not in russian_stopwords]
     text = " ".join(tokens)
@@ -148,19 +68,7 @@ def preprocess_text_only_A(text: str) -> List[str]:
 
 
 def group_by_num(df: pd.DataFrame) -> pd.DataFrame:
-    """The function groups the dataframe by class label and
-    calculates the minimum and maximum number of words in the text
-
-    Args:
-        df (pd.DataFrame): DataFrame with text information
-
-    Returns:
-        pd.DataFrame: groupped DataFrame
-    """
-    num = []
-    max = []
-    min = []
-    mean = []
+    num, max, min, mean = [], [], [], []
     groupped_d = {'num': num, 'max': max, 'min': min, 'mean': mean}
     for i in range(1, 6):
         num.append(str(i))
@@ -175,14 +83,6 @@ def group_by_num(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def make_histogram(df: pd.DataFrame, num: str) -> Dict[str, int]:
-    """Function make dictionary word: count by num marks for making histogram
-    Args:
-        df (pd.DataFrame): DataFrame with text information
-        num (str): num mark
-
-    Returns:
-        Dict[str, int]: dictionary word: count in num marks text
-    """
     res = []
     lenght = len(df.loc[df['num'] == num]['text'])
     for i in range(lenght):
@@ -197,11 +97,6 @@ def make_histogram(df: pd.DataFrame, num: str) -> Dict[str, int]:
 
 
 def graph_build(hist_list: Dict[str, int]) -> None:
-    """Function make plot with matplotlib x-axe is word count y-axe is word
-
-    Args:
-        hist_list (Dict[str, int]): dictionary word: num mark
-    """
     words = []
     count = []
     for i in range(len(hist_list)):
@@ -227,8 +122,8 @@ if __name__ == "__main__":
     print('----')
     print(df)
     print('----')
-    print(stats_by_word_count(df))
-    print(sort_by_word_count(df, 100))
+    print(group_and_mean_word_count(df))
+    print(sort_by_max_word_count(df, 100))
     print(sort_by_num(df, '5'))
     print(preprocess_text(''))
     print(group_by_num(df))
