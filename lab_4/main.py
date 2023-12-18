@@ -1,27 +1,25 @@
 import csv
 import re
 import os
-
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import nltk # xử lý văn bản thôi
+import nltk
 from annotation import Annotation
 from create_annotation import create_annotation as crt
 from typing import List, Dict, Tuple
-from collections import Counter # thư viên đếm số lần xuất hiện iterable
+from collections import Counter
 from nltk.corpus import stopwords
-from pymystem3 import Mystem  # lemmatization được phát triển bởi yandex
+from pymystem3 import Mystem
 
 mystem = Mystem()
 russian_stopwords = stopwords.words("russian")
 
 
-def make_df(path: str) -> pd.DataFrame:
-    path_dataset = os.path.join(path, "dataset")
-    ann = Annotation(os.path.join(path, "file_csv.csv"))
+def read_csv(path: str) -> pd.DataFrame:
+    ann = Annotation("file_csv.csv")
     if not os.path.exists("file_csv.csv"):
-        crt(path_dataset, ann)
+        crt(path, ann)
     num_list, text_list = [], []
     items = list(csv.reader(open('file_csv.csv', 'r')))
     for item in items:
@@ -38,16 +36,16 @@ def text_update(text: str) -> List[str]:
     text = re.sub(r"[^\w\s]", "", text)
     return text.split()
 
-def add_word_count(df: pd.DataFrame) -> None:
+def count_word(df: pd.DataFrame) -> None:
     df['word_count'] = df['text'].apply(lambda x: len(text_update(x)))
 
 def group_and_mean_word_count(df: pd.DataFrame) -> pd.DataFrame:
     return df[["num", "word_count"]].groupby("num").mean()
 
-def sort_by_max_word_count(df: pd.DataFrame, max_count: int) -> pd.DataFrame:
+def filter_by_word(df: pd.DataFrame, max_count: int) -> pd.DataFrame:
     return df.loc[df['word_count'] <= max_count]
 
-def sort_by_num(df: pd.DataFrame, num: str) -> pd.DataFrame:
+def filter_by_rating(df: pd.DataFrame, num: str) -> pd.DataFrame:
     return df.loc[df['num'] == num]
 
 def preprocess_text(text: str) -> List[str]:
@@ -83,17 +81,17 @@ def group_by_num(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def make_histogram(df: pd.DataFrame, num: str) -> Dict[str, int]:
-    res = []
-    lenght = len(df.loc[df['num'] == num]['text'])
-    for i in range(lenght):
+    result = []
+    length = len(df.loc[df['num'] == num]['text'])
+    for i in range(length):
         text = df.loc[df['num'] == num]['text'].iloc[i]
         text = preprocess_text_only_A(text)
-        res += text
+        result += text
         print(i)
-    res = dict(Counter(res))
-    res = sorted(res.items(), key=lambda item: item[1], reverse=True)
-    res = res[0:30]
-    return res
+    result = dict(Counter(result))
+    result = sorted(result.items(), key=lambda item: item[1], reverse=True)
+    result = result[0:30]
+    return result
 
 
 def graph_build(hist_list: Dict[str, int]) -> None:
@@ -117,14 +115,14 @@ def graph_build(hist_list: Dict[str, int]) -> None:
 
 
 if __name__ == "__main__":
-    df = make_df('dataset')
-    add_word_count(df)
+    df = read_csv('dataset')
+    count_word(df)
     print('----')
     print(df)
     print('----')
     print(group_and_mean_word_count(df))
-    print(sort_by_max_word_count(df, 100))
-    print(sort_by_num(df, '5'))
+    print(filter_by_word(df, 100))
+    print(filter_by_rating(df, '5'))
     print(preprocess_text(''))
     print(group_by_num(df))
     hist = make_histogram(df, "2")
