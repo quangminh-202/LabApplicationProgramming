@@ -71,22 +71,22 @@ def lemmatize(review: str) -> List[str]:
             preprocessed_text.append(lemma)
     return preprocessed_text
 
-def most_popular_words(df: pd.core.frame.DataFrame, rating: int) -> List[tuple[str, int]]:
-    data = df[df['num'] == rating]['text'].apply(lemmatize)
-    words = Counter()
-    for txt in data:
-        words.update(txt)
-    return words.most_common(10)
+def most_popular_words(df: pd.DataFrame, rating: int) -> List[tuple[str, int]]:
+    words = df[df['num'] == rating]['text'].apply(lemmatize)
+    count = Counter()
+    for word in words:
+        count.update(word)
+    return count.most_common(20)
 
-def graph_build(hist_list: List[tuple[str, int]]) -> None:
+def graph_build(list_words: List[tuple[str, int]]) -> None:
     words, count = [], []
-    for i in range(len(hist_list)):
-        words.append(hist_list[i][0])
-        count.append(hist_list[i][1])
-    fig, ax = plt.subplots()
-    ax.bar(words, count)
-    ax.set_ylabel('Количество')
-    ax.set_title('Гистограмма самых популярных слов')
+    for i in range(len(list_words)):
+        words.append(list_words[i][0])
+        count.append(list_words[i][1])
+    figure, axes = plt.subplots()
+    axes.barh(words, count)
+    axes.set_xlabel('Количество')
+    axes.set_title('Гистограмма самых популярных слов')
     plt.show()
 
 if __name__ == "__main__":
