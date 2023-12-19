@@ -13,5 +13,6 @@ class Annotation:
             if self.rows == 0:
                 writer.writerow(["Absolute Path", "Relative Path", "Label"])
                 self.rows += 1
-            writer.writerow([os.path.join(path, filename), os.path.relpath(os.path.join(path, filename)), label])
+            absolute_path = os.path.join(path, filename).replace("\\", "/")
+            writer.writerow([absolute_path, os.path.relpath(os.path.join(path, filename)), label])
             self.rows += 1

@@ -17,9 +17,6 @@ russian_stopwords = stopwords.words("russian")
 
 
 def read_csv(path: str) -> pd.DataFrame:
-    ann = Annotation("file_csv.csv")
-    if not os.path.exists("file_csv.csv"):
-        crt(path, ann)
     num_list, text_list = [], []
     items = list(csv.reader(open('file_csv.csv', 'r')))
     for item in items:
@@ -90,44 +87,38 @@ def make_histogram(df: pd.DataFrame, num: str) -> Dict[str, int]:
         print(i)
     result = dict(Counter(result))
     result = sorted(result.items(), key=lambda item: item[1], reverse=True)
-    result = result[0:30]
+    result = result[0:10]
     return result
 
 
 def graph_build(hist_list: Dict[str, int]) -> None:
-    words = []
-    count = []
+    words, count = [], []
     for i in range(len(hist_list)):
         words.append(hist_list[i][0])
         count.append(hist_list[i][1])
-
     fig, ax = plt.subplots()
-
     y_pos = np.arange(len(words))
-
     ax.barh(y_pos, count, align='center')
     ax.set_yticks(y_pos, labels=words)
     ax.invert_yaxis()
     ax.set_xlabel('Word count')
     ax.set_title('The most popular words')
-
     plt.show()
 
-
 if __name__ == "__main__":
-    df = read_csv('dataset')
-    count_word(df)
+    df = read_csv('file_csv.csv')
+    # count_word(df)
     print('----')
     print(df)
     print('----')
-    print(group_and_mean_word_count(df))
-    print(filter_by_word(df, 100))
-    print(filter_by_rating(df, '5'))
-    print(preprocess_text(''))
-    print(group_by_num(df))
-    hist = make_histogram(df, "2")
-    graph_build(hist)
-
+    # print(group_and_mean_word_count(df))
+    # print(filter_by_word(df, 100))
+    # print(filter_by_rating(df, '5'))
+    # print(preprocess_text(''))
+    # print(group_by_num(df))
+    # hist = make_histogram(df, "2")
+    # graph_build(hist)
+    #
     # df = pd.read_csv('full_data.csv')
     # df = df.drop(df.columns[[0]], axis = 1)
     # df = df.dropna()
