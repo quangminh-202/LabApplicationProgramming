@@ -13,8 +13,11 @@ from nltk.corpus import stopwords
 from pymystem3 import Mystem
 from pymorphy3 import MorphAnalyzer
 
-patterns = "[A-Za-z0-9!#$%&'()*+,./:;<=>?@[\]^_`{|}~—\"\-]+"
-stopwords_ru = stopwords.words("russian")
+stopwords_ru = set(stopwords.words('russian'))
+patterns = re.compile(
+    r'\.|\,|\!|\?|\;|\:|\(|\)|\&|\=|\<|\>|\[|\]|\{|\}|\~|\`|\"|\'|'
+    r'\/|\\|\||\-'
+)
 morph = MorphAnalyzer()
 
 def read_csv_to_dataframe(csv_path: str) -> pd.DataFrame:
